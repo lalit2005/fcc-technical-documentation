@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/heroku-logo-solid-gradient.png" type="image/x-icon">
+    <title>Heroku | Devcenter</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <header>Heroku NodeJS Getting Started</header>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#set_up">Set Up</a></li>
+            <li><a href="#prepare_the_app">Prepare the App</a></li>
+            <li><a href="#deploy_the_app">Deploy the App</a></li>
+            <li><a href="#view_logs">View Logs</a></li>
+            <li><a href="#next_steps">Next Steps</a></li>
+        </ul>
+    </nav>
+    <div id="main-doc">
+        <!-- ----------- SECTTION ---------- -->
+        <section class="main-section">
+            <header id="introduction">
+                <h1>Introduction</h1>
+            </header>
+        </section>
+        <p>
+            This tutorial will have you deploying a Node.js app to Heroku in minutes.
+
+            Hang on for a few more minutes to learn how to get the most out of the Heroku platform.
+
+            The tutorial assumes that you have a free Heroku account, and that you have Node.js and npm installed
+            locally.
+        </p>
+        <!-- ----------- SECTTION ---------- -->
+        <section class="main-section">
+            <header id="set_up">
+                <h1>Set up</h1>
+            </header>
+            <p>
+                In this step you’ll install the Heroku Command Line Interface (CLI). You use the CLI to manage and scale
+                your applications, provision add-ons, view your application logs, and run your application locally.
+                Use the heroku login command to log in to the Heroku CLI:
+                This command opens your web browser to the Heroku login page. If your browser is already logged in to
+                Heroku, simply click the Log in button displayed on the page.
+
+                Use the heroku login command to log in to the Heroku CLI:
+                <div class="code">
+                    $ heroku login<br>
+                    $ heroku: Press any key to open up the browser to login or q to exit<br>
+                    › Warning: If browser does not open, visit<br>
+                    › https://cli-auth.heroku.com/auth/browser/***<br>
+                    heroku: Waiting for login...<br>
+                    Logging in... done<br>
+                    Logged in as me@example.com<br>
+                </div>
+                This authentication is required for both the heroku and git commands to work correctly.
+
+                Before you continue, check that you have the prerequisites installed properly. Type each command below
+                and make sure it displays the version you have installed. (Your versions might be different from the
+                example.) If no version is returned, go back to the introduction of this tutorial and install the
+                prerequisites.
+
+                All of the following local setup will be required to complete the “Declare app dependencies” and
+                subsequent steps.
+
+                This tutorial will work for any version of Node greater than 8 - check that it’s there:
+            </p>
+        </section>
+        <!-- ----------- SECTTION ---------- -->
+        <section class="main-section">
+            <header id="prepare_the_app">
+                <h1>Prepare the app</h1>
+            </header>
+            <p>
+                In this step, you will prepare a sample application that’s ready to be deployed to Heroku.
+
+                To clone a local version of the sample application that you can then deploy to Heroku, execute the
+                following commands in your local command shell or terminal:
+
+                <div class="code">$ git clone https://github.com/heroku/node-js-getting-started.git
+                    <br>
+                    $ cd node-js-getting-started
+                </div>
+
+                Before you continue, check that you have the prerequisites installed properly. Type each command below
+                and make sure it displays the version you have installed. (Your versions might be different from the
+                example.) If no version is returned, go back to the introduction of this tutorial and install the
+                prerequisites.
+
+                All of the following local setup will be required to complete the “Declare app dependencies” and
+                subsequent steps.
+
+                This tutorial will work for any version of Node greater than 8 - check that it’s there:
+
+                <div class="code">
+                    $ node --version <br>
+                    v12.16.3
+                </div>
+
+                npm is installed with Node, so check that it’s there. If you don’t have it, install a more recent
+                version of Node:
+
+                <div class="code">
+                    $ node --version <br>
+                    v12.16.3
+                </div>
+
+                Now check that you have git installed. If not, install it and test again.
+
+                <div class="code">
+                    $ git --version <br>
+                    git version 2.17.0
+                </div>
+            </p>
+        </section>
+        <!-- ----------- SECTTION ---------- -->
+        <section class="main-section">
+            <header id="deploy_the_app">
+                <h1>Deploy the app</h1>
+            </header>
+            <p>
+                In this step you will deploy the app to Heroku.
+
+                Create an app on Heroku, which prepares Heroku to receive your source code.
+
+                <div class="code">
+                    $ heroku create <br>
+                    Creating sharp-rain-871... done, stack is heroku-18 <br>
+                    http://sharp-rain-871.herokuapp.com/ | https://git.heroku.com/sharp-rain-871.git <br>
+                    Git remote heroku added <br>
+                </div>
+
+                When you create an app, a git remote (called heroku) is also created and associated with your local git
+                repository.
+
+                Heroku generates a random name (in this case sharp-rain-871) for your app, or you can pass a parameter
+                to specify your own app name.
+
+                Now deploy your code:
+
+                <div class="code">
+                    $ git push heroku main <br>
+                    Counting objects: 488, done. <br>
+                    Delta compression using up to 8 threads. <br>
+                    Compressing objects: 100% (367/367), done. <br>
+                    Writing objects: 100% (488/488), 231.85 KiB | 115.92 MiB/s, done. <br>
+                    Total 488 (delta 86), reused 488 (delta 86) <br>
+                    remote: Compressing source files... done. <br>
+                    remote: Building source: <br>
+                    remote: <br>
+                    remote: -----> Node.js app detected <br>
+                    remote: <br>
+                    remote: -----> Creating runtime environment <br>
+                    remote: <br>
+                    remote: NPM_CONFIG_LOGLEVEL=error <br>
+                    remote: NODE_VERBOSE=false <br>
+                    remote: NODE_ENV=production <br>
+                    remote: NODE_MODULES_CACHE=true <br>
+                    remote: <br>
+                    remote: -----> Installing binaries <br>
+                    remote: engines.node (package.json): 12.x <br>
+                    remote: engines.npm (package.json): unspecified (use default) <br>
+                    remote: <br>
+                    remote: Resolving node version 12.x...
+                    remote: Downloading and installing node 12.16.3... <br>
+                    remote: Using default npm version: 6.14.4 <br>
+                    .... <br>
+                    remote: -----> Build succeeded! <br>
+                    remote: -----> Discovering process types <br>
+                    remote: Procfile declares types -> web <br>
+                    remote: <br>
+                    remote: -----> Compressing... <br>
+                    remote: Done: 19M <br>
+                    remote: -----> Launching... <br>
+                    remote: Released v3 <br>
+                    remote: http://sharp-rain-871.herokuapp.com deployed to Heroku <br>
+                    remote: <br>
+                    remote: Verifying deploy... done. <br>
+                    To https://git.heroku.com/nameless-savannah-4829.git <br>
+                    * [new branch] main -> main <br>
+                </div>
+
+                The application is now deployed. Ensure that at least one instance of the app is running:
+
+                <div class="code">
+                    $ heroku ps:scale web=1
+                </div>
+
+                Now visit the app at the URL generated by its app name. As a handy shortcut, you can open the website as
+                follows:
+
+                <div class="code">
+                    $ heroku open
+                </div>
+            </p>
+        </section>
+        <!-- ----------- SECTTION ---------- -->
+        <section class="main-section">
+            <header id="view_logs">
+                <h1>View logs</h1>
+            </header>
+            <p>
+                Heroku treats logs as streams of time-ordered events aggregated from the output streams of all your app
+                and Heroku components, providing a single channel for all of the events.
+
+                View information about your running app using one of the logging commands, heroku logs --tail:
+
+                <div class="code">
+                    $ heroku logs --tail
+                    2011-03-10T10:22:30-08:00 heroku[web.1]: State changed from created to starting <br>
+                    2011-03-10T10:22:32-08:00 heroku[web.1]: Running process with command: `node index.js` <br>
+                    2011-03-10T10:22:33-08:00 heroku[web.1]: Listening on 18320 <br>
+                    2011-03-10T10:22:34-08:00 heroku[web.1]: State changed from starting to up <br>
+                </div>
+                Visit your application in the browser again, and you’ll see another log message generated.
+
+                Press Control+C to stop streaming the logs.
+            </p>
+        </section>
+        <!-- ----------- SECTTION ---------- -->
+        <section class="main-section">
+            <header id="next_steps">
+                <h1>Next steps</h1>
+                <p>
+                    You now know how to deploy an app, change its configuration, view logs, scale, and attach add-ons.
+
+                    Here’s some recommended reading. The first, an article, will give you a firmer understanding of the
+                    basics. The second is a pointer to the main Node.js category here on Dev Center:
+
+                    Read How Heroku Works for a technical overview of the concepts you’ll encounter while writing,
+                    configuring, deploying and running applications.
+                    Visit the Node.js category to learn more about developing and deploying Node.js applications.
+                    Read Deploying Node.js Apps on Heroku to understand how to take an existing Node.js app and deploy
+                    it to Heroku.
+
+                </p>
+            </header>
+
+        </section>
+        <!-- ----------- SECTTION ---------- -->
+    </div>
+
+</body>
+
+</html>
